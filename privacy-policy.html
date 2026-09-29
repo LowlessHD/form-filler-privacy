@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gizlilik Politikası – Form Filler</title>
+  <meta name="description" content="Form Filler Chrome eklentisi gizlilik politikası. Hiçbir kullanıcı verisi toplanmaz veya paylaşılmaz." />
+  <style>
+    :root {
+      --bg: #0f1117; --surface: #181c27; --border: #2a2f42;
+      --text: #e8eaf6; --muted: #8892aa; --accent: #4f6ef7; --green: #34d399;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.7; font-size: 15px; padding: 0 16px;
+    }
+    .container { max-width: 740px; margin: 0 auto; padding: 48px 0 80px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(79,110,247,0.12); border: 1px solid rgba(79,110,247,0.3);
+      color: var(--accent); border-radius: 20px;
+      padding: 5px 14px; font-size: 13px; font-weight: 600; margin-bottom: 20px;
+    }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 40px; }
+    .subtitle span { color: var(--green); font-weight: 600; }
+    .summary-box {
+      background: rgba(52,211,153,0.07); border: 1px solid rgba(52,211,153,0.25);
+      border-radius: 12px; padding: 20px 24px; margin-bottom: 40px;
+    }
+    .summary-box p { color: #a7f3d0; font-size: 14px; margin: 0; }
+    .summary-box strong { color: var(--green); }
+    h2 {
+      font-size: 18px; font-weight: 600; margin: 36px 0 12px; color: var(--text);
+      display: flex; align-items: center; gap: 10px;
+    }
+    h2::before {
+      content: ''; display: block; width: 4px; height: 20px;
+      background: var(--accent); border-radius: 2px; flex-shrink: 0;
+    }
+    p, li { color: var(--muted); margin-bottom: 10px; }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    th {
+      background: var(--surface); color: var(--text);
+      padding: 10px 14px; text-align: left; border: 1px solid var(--border);
+    }
+    td { padding: 9px 14px; border: 1px solid var(--border); color: var(--muted); }
+    td:first-child { color: var(--text); font-weight: 500; }
+    .tag-no { color: #f87171; font-weight: 600; }
+    .contact-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 18px 22px; margin-top: 16px;
+    }
+    .update-note {
+      font-size: 12px; color: var(--border); text-align: center;
+      margin-top: 48px; border-top: 1px solid var(--border); padding-top: 20px;
+    }
+    .lang-toggle { display: flex; gap: 8px; margin-bottom: 32px; }
+    .lang-btn {
+      padding: 5px 14px; border-radius: 6px; font-size: 13px;
+      cursor: pointer; border: 1px solid var(--border);
+      background: var(--surface); color: var(--muted); transition: all 0.15s;
+    }
+    .lang-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    #content-en { display: none; }
+    #content-tr { display: block; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="badge">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    </svg>
+    Gizlilik Politikası
+  </div>
+
+  <h1>Form Filler – Privacy Policy</h1>
+  <p class="subtitle">Son güncelleme: <span>30 Eylül 2026</span></p>
+
+  <div class="summary-box">
+    <p><strong>Tek cümlede:</strong> Form Filler eklentisi hiçbir kişisel veri toplamaz,
+    saklamaz (cihazınız dışında) veya herhangi bir üçüncü tarafla paylaşmaz.
+    Eklenti tamamen çevrimdışı çalışır.</p>
+  </div>
+
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btn-tr" onclick="setLang('tr')">Türkce</button>
+    <button class="lang-btn"        id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+
+  <div id="content-tr">
+    <h2>1. Toplanan Veriler</h2>
+    <p>Form Filler eklentisi <strong>hiçbir veri toplamaz</strong>.</p>
+    <p>Kullanıcı tarafından girilen profil bilgileri yalnızca
+    <code>chrome.storage.local</code> aracılığıyla <strong>cihazınızda</strong> saklanır:</p>
+    <ul>
+      <li>Hiçbir sunucuya gönderilmez</li>
+      <li>Üçüncü şahıslarla paylaşılmaz</li>
+      <li>Eklenti kaldırıldığında otomatik silinir</li>
+    </ul>
+
+    <h2>2. İzinler ve Gerekçeleri</h2>
+    <table>
+      <tr><th>İzin</th><th>Neden Gerekli?</th><th>Veri Gönderimi?</th></tr>
+      <tr><td>storage</td><td>Profil bilgilerini cihazda saklamak</td><td class="tag-no">Hayır</td></tr>
+      <tr><td>activeTab</td><td>Aktif sekmedeki formu tespit etmek</td><td class="tag-no">Hayır</td></tr>
+      <tr><td>scripting</td><td>Form doldurma kodunu sekmeye çalıştırmak (butona basıldığında)</td><td class="tag-no">Hayır</td></tr>
+    </table>
+
+    <h2>3. Çerezler ve İzleme</h2>
+    <p>Eklenti çerez kullanmaz, analytics çalıştırmaz, izleme kodu içermez.</p>
+
+    <h2>4. Üçüncü Taraf Hizmetler</h2>
+    <p>Eklenti herhangi bir harici API, CDN veya uzak kaynakla iletişim <strong>kurmaz</strong>.
+    Tüm kod eklentinin kendi dosyaları içindedir.</p>
+
+    <h2>5. Çocukların Gizliliği</h2>
+    <p>Bu eklenti 13 yaş altı çocuklara yönelik değildir ve onlardan bilgi toplamaz.</p>
+
+    <h2>6. Değişiklikler</h2>
+    <p>Bu politikada yapılacak değişiklikler bu sayfada duyurulacaktır.</p>
+
+    <h2>7. İletişim</h2>
+    <div class="contact-box">
+      <p style="color:var(--text); margin:0;">
+        Sorularınız için Chrome Web Store eklenti sayfasındaki <strong>"Destek"</strong> bağlantısını kullanabilirsiniz.
+      </p>
+    </div>
+  </div>
+
+  <div id="content-en">
+    <h2>1. Data Collection</h2>
+    <p>Form Filler does <strong>not collect any data</strong>.</p>
+    <p>Profile information entered by the user is stored <strong>only on your device</strong>
+    via <code>chrome.storage.local</code>:</p>
+    <ul>
+      <li>Never sent to any server</li>
+      <li>Never shared with third parties</li>
+      <li>Automatically deleted when the extension is removed</li>
+    </ul>
+
+    <h2>2. Permissions and Justifications</h2>
+    <table>
+      <tr><th>Permission</th><th>Why Required?</th><th>Data Sent?</th></tr>
+      <tr><td>storage</td><td>To store profile data locally on your device</td><td class="tag-no">No</td></tr>
+      <tr><td>activeTab</td><td>To detect the form on the active tab</td><td class="tag-no">No</td></tr>
+      <tr><td>scripting</td><td>To run form-filling code in the active tab (only on button click)</td><td class="tag-no">No</td></tr>
+    </table>
+
+    <h2>3. Cookies and Tracking</h2>
+    <p>The extension uses no cookies, runs no analytics, and contains no tracking code.</p>
+
+    <h2>4. Third-Party Services</h2>
+    <p>The extension does <strong>not communicate</strong> with any external APIs, CDNs,
+    or remote resources. All code is self-contained.</p>
+
+    <h2>5. Children's Privacy</h2>
+    <p>This extension is not directed at children under 13 and does not knowingly collect information from them.</p>
+
+    <h2>6. Changes</h2>
+    <p>Any changes to this policy will be announced on this page.</p>
+
+    <h2>7. Contact</h2>
+    <div class="contact-box">
+      <p style="color:var(--text); margin:0;">
+        For questions, please use the <strong>"Support"</strong> link on the Chrome Web Store extension page.
+      </p>
+    </div>
+  </div>
+
+  <p class="update-note">Form Filler &middot; Privacy Policy &middot; v1.0 &middot; 2026</p>
+</div>
+<script>
+  function setLang(lang) {
+    document.getElementById('content-tr').style.display = lang === 'tr' ? 'block' : 'none';
+    document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
+    document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+  }
+</script>
+</body>
+</html>
